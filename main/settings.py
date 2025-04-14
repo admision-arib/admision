@@ -31,8 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Inicializar environ y cargar el archivo .env
 #env = environ.Env(DEBUG=(bool, False))
 import json
+#GOOGLE_JSON_VAR = config('GOOGLE_DRIVE_CREDENTIALS_JSON', default=None)
 
-GOOGLE_JSON_VAR = os.getenv('GOOGLE_DRIVE_CREDENTIALS_JSON')
+GOOGLE_JSON_VAR = config('GOOGLE_DRIVE_CREDENTIALS_JSON')
 
 if GOOGLE_JSON_VAR:
     with open(os.path.join(BASE_DIR, 'client_secrets.json'), 'w') as f:
@@ -63,7 +64,8 @@ INSTALLED_APPS = [
     #'theme',
     'postulantes',
     #'django_browser_reload',
-    'gdstorage'
+    'gdstorage',
+    'import_export',
 ]
 
 
@@ -157,6 +159,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
